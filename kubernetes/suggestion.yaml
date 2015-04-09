@@ -1,0 +1,25 @@
+kind: ReplicationController
+id: suggestion-controller
+apiVersion: v1beta1
+desiredState:
+  replicas: 1
+  replicaSelector:
+    name: suggestion
+    version: v1
+  podTemplate:
+    labels:
+      name : suggestion
+      version: v1
+    desiredState:
+      manifest:
+        containers:
+          - name: suggestion
+            image: clemble/suggestion:latest
+            imagePullPolicy : PullAlways
+            ports:
+              - containerPort: 10007
+                hostPort: 10007
+                protocol: TCP
+            labels:
+              name : suggestion
+              version: v1
