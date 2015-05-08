@@ -1,7 +1,7 @@
 package com.clemble.casino.goal.suggestion.spring;
 
 import com.clemble.casino.goal.suggestion.*;
-import com.clemble.casino.goal.suggestion.controller.GoalSuggestionServiceController;
+import com.clemble.casino.goal.suggestion.controller.GoalSuggestionController;
 import com.clemble.casino.goal.suggestion.repository.GoalSuggestionRepository;
 import com.clemble.casino.server.key.RedisKeyFactory;
 import com.clemble.casino.server.player.notification.ServerNotificationService;
@@ -37,12 +37,12 @@ public class GoalSuggestionSpringConfiguration {
     }
 
     @Bean
-    public GoalSuggestionServiceController goalSuggestionServiceController(
+    public GoalSuggestionController goalSuggestionServiceController(
         GoalSuggestionKeyGenerator goalKeyGenerator,
         SystemNotificationService notificationService,
         @Qualifier("playerNotificationService") ServerNotificationService playerNotificationService,
         GoalSuggestionRepository suggestionRepository){
-        return new GoalSuggestionServiceController(
+        return new GoalSuggestionController(
             goalKeyGenerator,
             playerNotificationService,
             notificationService,

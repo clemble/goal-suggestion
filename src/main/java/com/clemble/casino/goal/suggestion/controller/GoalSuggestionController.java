@@ -27,18 +27,18 @@ import java.util.List;
  * Created by mavarazy on 1/3/15.
  */
 @RestController
-public class GoalSuggestionServiceController implements GoalSuggestionService {
+public class GoalSuggestionController implements GoalSuggestionService {
 
     final private GoalSuggestionKeyGenerator keyGenerator;
     final private ServerNotificationService playerNotificationService;
     final private GoalSuggestionRepository suggestionRepository;
     final private SystemNotificationService notificationService;
 
-    public GoalSuggestionServiceController(
-        GoalSuggestionKeyGenerator keyGenerator,
-        ServerNotificationService playerNotificationService,
-        SystemNotificationService notificationService,
-        GoalSuggestionRepository suggestionRepository) {
+    public GoalSuggestionController(
+            GoalSuggestionKeyGenerator keyGenerator,
+            ServerNotificationService playerNotificationService,
+            SystemNotificationService notificationService,
+            GoalSuggestionRepository suggestionRepository) {
         this.keyGenerator = keyGenerator;
         this.notificationService = notificationService;
         this.suggestionRepository = suggestionRepository;
