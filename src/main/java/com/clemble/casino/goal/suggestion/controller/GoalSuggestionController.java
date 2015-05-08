@@ -12,6 +12,7 @@ import com.clemble.casino.goal.lifecycle.construction.GoalSuggestionRequest;
 import com.clemble.casino.goal.lifecycle.construction.GoalSuggestionState;
 import com.clemble.casino.goal.lifecycle.construction.service.GoalSuggestionService;
 import com.clemble.casino.goal.suggestion.repository.GoalSuggestionRepository;
+import com.clemble.casino.server.ExternalController;
 import com.clemble.casino.server.event.goal.SystemGoalInitiationStartedEvent;
 import com.clemble.casino.server.event.payment.SystemPaymentFreezeRequestEvent;
 import com.clemble.casino.server.player.notification.ServerNotificationService;
@@ -27,7 +28,7 @@ import java.util.List;
  * Created by mavarazy on 1/3/15.
  */
 @RestController
-public class GoalSuggestionController implements GoalSuggestionService {
+public class GoalSuggestionController implements GoalSuggestionService, ExternalController {
 
     final private GoalSuggestionKeyGenerator keyGenerator;
     final private ServerNotificationService playerNotificationService;
