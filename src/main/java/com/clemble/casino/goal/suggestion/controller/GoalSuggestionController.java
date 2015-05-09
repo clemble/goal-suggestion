@@ -13,8 +13,7 @@ import com.clemble.casino.goal.lifecycle.construction.GoalSuggestionState;
 import com.clemble.casino.goal.lifecycle.construction.service.GoalSuggestionService;
 import com.clemble.casino.goal.suggestion.repository.GoalSuggestionRepository;
 import com.clemble.casino.server.ExternalController;
-import com.clemble.casino.server.event.goal.SystemGoalInitiationStartedEvent;
-import com.clemble.casino.server.event.payment.SystemPaymentFreezeRequestEvent;
+import com.clemble.casino.server.event.goal.SystemGoalStartedEvent;
 import com.clemble.casino.server.player.notification.ServerNotificationService;
 import com.clemble.casino.server.player.notification.SystemNotificationService;
 import com.clemble.casino.tag.TagUtils;
@@ -108,7 +107,7 @@ public class GoalSuggestionController implements GoalSuggestionService, External
         // Step 2. Changing state
         if (response.getAccepted()) {
             suggestion = suggestion.copyWithStatus(GoalSuggestionState.accepted);
-            notificationService.send(new SystemGoalInitiationStartedEvent(suggestion.getGoalKey(), suggestion.toInitiation(response.getConfiguration())));
+            notificationService.send(new SystemGoalStartedEvent(suggestion.getGoalKey(), suggestion.toConstruction(response.getConfiguration())));
             playerNotificationService.send(new GoalSuggestionAcceptedEvent(player, suggestion));
         } else {
             suggestion = suggestion.copyWithStatus(GoalSuggestionState.declined);
